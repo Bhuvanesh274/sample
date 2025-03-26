@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="task-container">
+        <h2>🚀 Your To-Do List 🚀</h2>
+        <form method="POST">
+            <input type="text" name="task" placeholder="New Task" required>
+            <button type="submit">Add Task</button>
+        </form>
+        <ul>
+            <?php while ($row = $result->fetch_assoc()): ?>
+                <li>
+                    <?= $row['task'] ?>
+                    <a href="?complete=<?= $row['id'] ?>">✔</a>
+                    <a href="?delete=<?= $row['id'] ?>">❌</a>
+                </li>
+            <?php endwhile; ?>
+        </ul>
+        <a href="logout.php">Logout</a>
+    </div>
+</body>
+</html>
